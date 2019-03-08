@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Rock Paper Scissors</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assests/css/stylesheet.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.6/firebase.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h1 class="text-center mb-3 mt-3">Welcome To The Epic Rock Paper Scissors (jad style)</h1>
+            </div>
+        </div>
+        <div>
+            <div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button id="player" class="btn btn-outline-info dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">pick your player</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" id="player-1" href="#">Player 1</a>
+                            <div role="separator" class="dropdown-divider"></div>
+                            <a class="dropdown-item" id="player-2" href="#">Player 2</a>
+                        </div>
+                    </div>
+                    <input id="player-name" type="text" class="form-control" aria-label="input your name and select a player">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assests/js/main.js"></script>
+</body>
+
+</html>

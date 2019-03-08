@@ -1,0 +1,8 @@
+body{
+    color: #82C7F1 !important;
+    background: url("../img/background.png");
+}
+.disabled{
+    cursor: not-allowed !important;
+    pointer-events: visible !important;  
+}
