@@ -17,6 +17,12 @@ window.onload = function () {
   $('#reset').hide();
   $('#player1-win').hide();
   $('#player2-win').hide();
+
+  database.ref(function(childSnapshot) {
+    rounds = childSnapshot.val().rounds;
+    score1 = childSnapshot.val().player1Score;
+    score2 = childSnapshot.val().player2Score;
+  });
 }
 
 function validate() {
@@ -60,12 +66,6 @@ var temp = {
 };
 
 database.ref().push(temp);
-
-database.ref().onload(function(childSnapshot) {
-  rounds = childSnapshot.val().rounds;
-  score1 = childSnapshot.val().player1Score;
-  score2 = childSnapshot.val().player2Score;
-});
 
 $(document).on('click', 'img', function () {
   var image = this.value;
