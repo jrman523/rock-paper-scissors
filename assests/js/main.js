@@ -8,7 +8,7 @@ var config = {
 };
 firebase.initializeApp(config);
 var database = firebase.database();
-var player1, player2, score1 = 0, score2 = 0, rounds = 0;
+var player1 = null, player2 = null, score1 = 0, score2 = 0, rounds = 0, tie = 0;
 
 window.onload = function () {
   $('#set-1').hide();
@@ -18,57 +18,68 @@ window.onload = function () {
   $('#player1-win').hide();
   $('#player2-win').hide();
 
-  database.ref(function(childSnapshot) {
-    rounds = childSnapshot.val().rounds;
-    score1 = childSnapshot.val().player1Score;
-    score2 = childSnapshot.val().player2Score;
+  database.ref().on("value", function (snapshot) {
+    rounds = snapshot.val().rounds;
+    score1 = snapshot.val().player1Score;
+    score2 = snapshot.val().player2Score;
+    tie = snapshot.val().tie;
+    $('#player-1-score').text(score1);
+    $('#player-2-score').text(score2);
+    $('#rounds').text(rounds);
+    $('#ties').text(tie);
   });
 }
 
 function validate() {
   rounds++;
-  if (player1 === player2) {
-    setTimeout(function () { $('#tie').show(); }, 3000);
+  if (player1 === "paper-1" && player2 === "paper-2" || player1 === "rock-1" && player2 === "rock-2" || player1 === "scissors-1" && player2 === "scissors-2") {
+    tie++;
+    $('#ties').text(tie);
+    $('#tie').show();
   }
   if (player1 === "paper-1" && player2 === "rock-2") {
     score1++;
     $('#player-1-score').text(score1);
-    setTimeout(function () { $('#player1-win').show(); }, 3000);
+    $('#player1-win').show();
   } else if (player1 === "rock-1" && player2 === "paper-2") {
     score2++;
     $('#player-2-score').text(score2);
-    setTimeout(function () { $('#player2-win').show(); }, 3000);
+    $('#player2-win').show();
   }
   if (player1 === "rock-1" && player2 === "scissors-2") {
     score1++;
     $('#player-1-score').text(score1);
-    setTimeout(function () { $('#player1-win').show(); }, 3000);
-  } else if(player1 === "scissors-1" && player2 === "rock-2"){
+    $('#player1-win').show();
+  } else if (player1 === "scissors-1" && player2 === "rock-2") {
     score2++;
     $('#player-2-score').text(score2);
-    setTimeout(function () { $('#player2-win').show(); }, 3000);
+    $('#player2-win').show();
   }
   if (player1 === "scissors-1" && player2 === "paper-2") {
     score1++;
     $('#player-1-score').text(score1);
-    setTimeout(function () { $('#player1-win').show(); }, 3000);
-  } else if(player1 === "paper-1" && player2 === "scissors-2"){
+    $('#player1-win').show();
+  } else if (player1 === "paper-1" && player2 === "scissors-2") {
     score2++;
     $('#player-2-score').text(score2);
-    setTimeout(function () { $('#player2-win').show(); }, 3000);
+    $('#player2-win').show();
   }
+
+  database.ref().set({
+    player1Score: score1,
+    player2Score: score2,
+    rounds: rounds,
+    tie: tie
+  });
+
   $('#reset').show();
 }
-var temp = {
-  rounds: rounds,
-  player1Score: score1,
-  player2Score: score2
-};
 
-database.ref().push(temp);
+
+
 
 $(document).on('click', 'img', function () {
-  var image = this.value;
+  var image = $(this).attr('data-value');
   console.log(image);
   if (image === "paper-1" || image === "rock-1" || image === "scissors-1") {
     $('#set-1').hide();
@@ -76,6 +87,9 @@ $(document).on('click', 'img', function () {
   } else {
     $('#set-2').hide();
     player2 = image;
+  }
+  if (player1 != null && player2 != null) {
+    validate();
   }
 });
 
@@ -93,10 +107,13 @@ $('#player-2').on('click', function () {
   $('#set-2').show();
 });
 
-$('#reset').on('click', function(){
+$('#reset').on('click', function () {
   $('#set-1').hide();
   $('#set-2').hide();
   $('#reset').hide();
+  $('#tie').hide();
+  $('#player2-win').hide();
+  $('#player1-win').hide();
   $('#player-1').removeClass('btn-secondary');
   $('#player-1').removeClass('disabled');
   $('#player-1').addClass('btn-outline-info');

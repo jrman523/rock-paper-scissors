@@ -20,31 +20,34 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <h1 class="text-center display-4 mb-4 mt-4">Welcome To The Epic Rock Paper Scissors</h1>
                 <button type="button" class="score btn-xl text-center mb-4">
-                    rounds <span id="rounds" class="badge badge-secondary">0</span>
+                    rounds <span id="rounds" class="badge badge-secondary"></span>
+                </button>
+                <button type="button" class="score btn-xl text-center mb-4">
+                    ties <span id="ties" class="badge badge-secondary"></span>
                 </button>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <button type="button" class="score btn-xl text-center mb-4">
-                    score <span id="player-1-score" class="badge badge-secondary">0</span>
+                    score <span id="player-1-score" class="badge badge-secondary"></span>
                 </button>
                 <button type="button" id="player-1" class="btn btn-xl btn-outline-info mb-4">Player One</button>
                 <div id="set-1">
-                    <img class="img" value="paper-1" src="assests/img/paper.png" alt="paper">
-                    <img class="img" value="rock-1" src="assests/img/rock.png" alt="rock">
-                    <img class="img" value="scissors-1" src="assests/img/scissors.png" alt="scissors">
+                    <img class="img" data-value="paper-1" src="assests/img/paper.png" alt="paper">
+                    <img class="img" data-value="rock-1" src="assests/img/rock.png" alt="rock">
+                    <img class="img" data-value="scissors-1" src="assests/img/scissors.png" alt="scissors">
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                 <button type="button" class="score btn-xl text-center mb-4">
-                    score <span id="player-2-score" class="badge badge-secondary">0</span>
+                    score <span id="player-2-score" class="badge badge-secondary"></span>
                 </button>
                 <button type="button" id="player-2" class="btn btn-xl btn-outline-info mb-4">Player Two</button>
                 <div id="set-2">
-                    <img class="img" value="paper-2" src="assests/img/paper.png" alt="paper">
-                    <img class="img" value="rock-2" src="assests/img/rock.png" alt="rock">
-                    <img class="img" value="scissors-2" src="assests/img/scissors.png" alt="scissors">
+                    <img class="img" data-value="paper-2" src="assests/img/paper.png" alt="paper">
+                    <img class="img" data-value="rock-2" src="assests/img/rock.png" alt="rock">
+                    <img class="img" data-value="scissors-2" src="assests/img/scissors.png" alt="scissors">
                 </div>
             </div>
         </div>
