@@ -6,9 +6,34 @@ body{
     cursor: not-allowed !important;
     pointer-events: visible !important;  
 }
+
 .btn-xl{
     width: 100%;
 }
- .btn-xl:focus{
+
+.btn-xl:focus{
     outline:0;
- }
+}
+.score{
+    cursor: default !important;
+    background-color: #138496;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    border: 1px solid #138496;
+}
+
+.img{
+    background: whitesmoke;
+    cursor: pointer;
+    position: relative;
+    left: 10%;
+    border: 5px solid white;
+    border-radius: 21px;
+    -webkit-border-radius: 21px;
+    -moz-border-radius: 21px;
+    -ms-border-radius: 21px;
+    -o-border-radius: 21px;
+    margin: 15px;
+}
