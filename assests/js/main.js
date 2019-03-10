@@ -120,4 +120,6 @@ $('#reset').on('click', function () {
   $('#player-2').removeClass('btn-secondary');
   $('#player-2').removeClass('disabled');
   $('#player-2').addClass('btn-outline-info');
+  player1 = null; 
+  player2 = null;
 });
