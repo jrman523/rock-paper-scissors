@@ -9,7 +9,7 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 var player1 = null, player2 = null, score1 = 0, score2 = 0, rounds = 0, tie = 0;
-
+var IsOpen1 = false, IsOpen2 = false;
 window.onload = function () {
   $('#set-1').hide();
   $('#set-2').hide();
@@ -80,31 +80,43 @@ function validate() {
 
 $(document).on('click', 'img', function () {
   var image = $(this).attr('data-value');
-  console.log(image);
   if (image === "paper-1" || image === "rock-1" || image === "scissors-1") {
     $('#set-1').hide();
     player1 = image;
+    IsOpen1 = false;
   } else {
     $('#set-2').hide();
     player2 = image;
+    IsOpen2 = false;
   }
   if (player1 != null && player2 != null) {
     validate();
   }
 });
 
-$('#player-1').on('click', function () {
-  $(this).addClass('disabled');
-  $(this).addClass('btn-secondary');
-  $(this).removeClass('btn-outline-info');
-  $('#set-1').show();
-});
-
-$('#player-2').on('click', function () {
-  $('#player-2').addClass('disabled');
-  $(this).addClass('btn-secondary');
-  $(this).removeClass('btn-outline-info');
-  $('#set-2').show();
+$(document).on('click', '.btn-outline-info', function () {
+  var whoIsIt = $(this).attr('id');
+ 
+  if (whoIsIt === "player-1") {
+    IsOpen1 = true;
+    if (IsOpen1 === true && IsOpen2 === false) {
+      $('#player-1').addClass('disabled');
+      $('#player-1').addClass('btn-secondary');
+      $('#player-1').removeClass('btn-outline-info');
+      $('#set-1').show();
+      
+    }
+  }
+  
+  if (whoIsIt === "player-2") {
+    IsOpen2 = true;
+    if (IsOpen1 === false && IsOpen2 === true) {
+      $('#player-2').addClass('disabled');
+      $('#player-2').addClass('btn-secondary');
+      $('#player-2').removeClass('btn-outline-info');
+      $('#set-2').show();
+    }
+  }
 });
 
 $('#reset').on('click', function () {
@@ -120,6 +132,6 @@ $('#reset').on('click', function () {
   $('#player-2').removeClass('btn-secondary');
   $('#player-2').removeClass('disabled');
   $('#player-2').addClass('btn-outline-info');
-  player1 = null; 
+  player1 = null;
   player2 = null;
 });
