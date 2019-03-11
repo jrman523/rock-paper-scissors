@@ -16,14 +16,23 @@ body{
 }
 .score{
     cursor: default !important;
-    background-color: #138496;
+    background-color: #17a2b8;;
     padding: .375rem .75rem;
     font-size: 1rem;
     line-height: 1.5;
     border-radius: .25rem;
-    border: 1px solid #138496;
+    border: 1px solid #17a2b8;;
 }
-
+.picking{
+    cursor: not-allowed !important;
+    background-color: transparent;
+    color: #17a2b8;;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    border: 1px solid #17a2b8;;
+}
 .img{
     background: whitesmoke;
     cursor: pointer;

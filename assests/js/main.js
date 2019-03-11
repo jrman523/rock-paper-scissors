@@ -84,10 +84,16 @@ $(document).on('click', 'img', function () {
     $('#set-1').hide();
     player1 = image;
     IsOpen1 = false;
+    $('#player-2').addClass('btn-outline-info');
+    $('#player-2').addClass('btn');
+    $('#player-2').removeClass('picking');
   } else {
     $('#set-2').hide();
     player2 = image;
     IsOpen2 = false;
+    $('#player-1').addClass('btn-outline-info');
+    $('#player-1').addClass('btn');
+    $('#player-1').removeClass('picking');
   }
   if (player1 != null && player2 != null) {
     validate();
@@ -96,7 +102,7 @@ $(document).on('click', 'img', function () {
 
 $(document).on('click', '.btn-outline-info', function () {
   var whoIsIt = $(this).attr('id');
- 
+
   if (whoIsIt === "player-1") {
     IsOpen1 = true;
     if (IsOpen1 === true && IsOpen2 === false) {
@@ -104,10 +110,13 @@ $(document).on('click', '.btn-outline-info', function () {
       $('#player-1').addClass('btn-secondary');
       $('#player-1').removeClass('btn-outline-info');
       $('#set-1').show();
-      
+      $('#player-2').removeClass('btn-outline-info');
+      $('#player-2').removeClass('btn');
+      $('#player-2').addClass('picking');
+
     }
   }
-  
+
   if (whoIsIt === "player-2") {
     IsOpen2 = true;
     if (IsOpen1 === false && IsOpen2 === true) {
@@ -115,6 +124,9 @@ $(document).on('click', '.btn-outline-info', function () {
       $('#player-2').addClass('btn-secondary');
       $('#player-2').removeClass('btn-outline-info');
       $('#set-2').show();
+      $('#player-1').removeClass('btn-outline-info');
+      $('#player-1').removeClass('btn');
+      $('#player-1').addClass('picking');
     }
   }
 });
